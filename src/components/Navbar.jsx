@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { jsx } from '@emotion/react';
+import LogoPokemon from '../assets/logo.png';
 
 const Container = styled.div`
   display: flex;
@@ -40,7 +41,9 @@ const Navbar = (props) => {
         >
           {props.title}
         </WrapperItem>
-        <div css={{ flexGrow: 1 }} />
+        <div css={{ flexGrow: 1 }}>
+          <img src={LogoPokemon} alt="Logo" css={{ width: '16vw' }} />
+        </div>
         <WrapperItem css={{
           '@media screen and (max-width: 600px)': {
             display: 'none',

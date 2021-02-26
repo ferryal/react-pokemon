@@ -8,7 +8,6 @@ const Card = (props) => {
     rounded, elevated, style, className, id, name, urlImg, ownedTotal = [], myPokemon = false, isDetail, children,
   } = props;
   let count = 0;
-  console.log(ownedTotal);
   if (!myPokemon && ownedTotal !== null) {
     if (ownedTotal.includes(id)) {
       ownedTotal.forEach((ids) => {
