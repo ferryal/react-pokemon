@@ -5,7 +5,7 @@ import { jsx } from '@emotion/react';
 
 const Card = (props) => {
   const {
-    rounded, elevated, style, className, id, name, urlImg, ownedTotal = [], myPokemon = false, isDetail, children,
+    rounded, elevated, style, className, id, name, urlImg, ownedTotal = [], myPokemon, isDetail, children,
   } = props;
   let count = 0;
   if (!myPokemon && ownedTotal !== null) {
@@ -40,7 +40,7 @@ const Card = (props) => {
       {
         !isDetail
           ? (
-            <Link to={myPokemon ? `/my-pokemon/${name}` : `/pokemon/${name}`} css={{ color: '#292829', textDecoration: 'none' }}>
+            <Link to={myPokemon === true ? `/my-pokemon-detail/${name}` : `/pokemon/${name}`} css={{ color: '#292829', textDecoration: 'none' }}>
               <div>
                 <img css={{ marginTop: '1rem' }} src={urlImg} alt={`${name} Pokemon Profile`} />
                 <p css={{

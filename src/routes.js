@@ -11,7 +11,7 @@ const Routes = () => (
     <Route exact path="/" component={ListPokemon} />
     <Route path="/pokemon/:name" component={PokemonDetail} />
     <Route path="/my-pokemon" component={MyPokemon} />
-    <Route path="/my-pokemon/:name" component={MyPokemonDetail} />
+    <Route path="/my-pokemon-detail/:name" component={MyPokemonDetail} />
     <Redirect to="/" />
   </Switch>
 );
