@@ -17,61 +17,85 @@ const Card = (props) => {
   }
 
   return (
-    <div
-      className={className}
-      css={{
-        borderRadius: rounded ? '10px' : '0',
-        boxShadow: elevated ? '8px 8px 16px #c4c4c4, -8px -8px 16px #ffffff' : 'none',
-        position: 'relative',
-        margin: '10px',
-        borderRadius: '8px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        flexDirection: 'column',
-        '&:hover': {
-          boxShadow: !isDetail ? '-2px 6px 13px -4px rgba(0,0,0,0.52)' : '',
-          opacity: !isDetail ? '0.6' : '',
-        },
-        ...style,
-      }}
-    >
+    <>
       {
         !isDetail
           ? (
             <Link to={myPokemon === true ? `/my-pokemon-detail/${name}` : `/pokemon/${name}`} css={{ color: '#292829', textDecoration: 'none' }}>
-              <div>
-                <img css={{ marginTop: '1rem' }} src={urlImg} alt={`${name} Pokemon Profile`} />
-                <p css={{
-                  textAlign: 'center',
-                  textTransform: 'capitalize',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
+              <div
+                className={className}
+                css={{
+                  borderRadius: rounded ? '10px' : '0',
+                  boxShadow: elevated ? '8px 8px 16px #c4c4c4, -8px -8px 16px #ffffff' : 'none',
+                  position: 'relative',
+                  margin: '10px',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  flexDirection: 'column',
+                  '&:hover': {
+                    boxShadow: '-2px 6px 13px -4px rgba(0,0,0,0.52)',
+                    opacity: '0.6',
+                  },
+                  ...style,
                 }}
-                >
-                  {name}
-                </p>
-                {!myPokemon && (
-                  <div css={{
+              >
+
+                <div>
+                  <img css={{ marginTop: '1rem' }} src={urlImg} alt={`${name} Pokemon Profile`} />
+                  <p css={{
                     textAlign: 'center',
-                    fontSize: '0.8rem',
                     textTransform: 'capitalize',
-                    paddingTop: '0.3rem',
-                    marginBottom: '0.8rem',
+                    fontSize: '1rem',
+                    fontWeight: '600',
+                    marginBottom: '0.5rem',
                   }}
                   >
-                    owned total:
-                    {' '}
-                    {count}
-                  </div>
-                )}
+                    {name}
+                  </p>
+                  {!myPokemon && (
+                    <div css={{
+                      textAlign: 'center',
+                      fontSize: '0.8rem',
+                      textTransform: 'capitalize',
+                      paddingTop: '0.3rem',
+                      marginBottom: '0.8rem',
+                    }}
+                    >
+                      owned total:
+                      {' '}
+                      {count}
+                    </div>
+                  )}
+                </div>
+
               </div>
             </Link>
-          ) : children
+          )
+          : (
+            <div
+              className={className}
+              css={{
+                borderRadius: rounded ? '10px' : '0',
+                boxShadow: elevated ? '8px 8px 16px #c4c4c4, -8px -8px 16px #ffffff' : 'none',
+                position: 'relative',
+                margin: '10px',
+                borderRadius: '8px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                flexDirection: 'column',
+                ...style,
+              }}
+            >
+              {children}
+            </div>
+          )
       }
-    </div>
+    </>
   );
 };
 
