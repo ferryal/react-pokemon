@@ -1,7 +1,7 @@
 // @ts-check
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 function _a(...args) {
   return args;
@@ -10,12 +10,12 @@ function _a(...args) {
 /** @type {import('webpack').Configuration} */
 const commonConfig = {
   entry: {
-    app: ["react-hot-loader/patch", "./src/index.jsx"],
+    app: ['react-hot-loader/patch', './src/index.jsx'],
   },
   output: {
-    path: path.resolve(__dirname, "../build"),
-    filename: "[name].[contenthash].bundle.js",
-    // publicPath: "/clicker/",
+    path: path.resolve(__dirname, '../build'),
+    filename: '[name].[contenthash].bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -23,26 +23,26 @@ const commonConfig = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: [
-              "@babel/preset-env",
-              _a("@babel/preset-react", { runtime: "automatic" }),
+              '@babel/preset-env',
+              _a('@babel/preset-react', { runtime: 'automatic' }),
             ],
-            plugins: ["react-hot-loader/babel"],
+            plugins: ['react-hot-loader/babel'],
           },
         },
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(jpg|png|gif|svg|pdf|ico)$/,
-        loader: require.resolve("file-loader"),
+        loader: require.resolve('file-loader'),
         options: {
           limit: 10000,
-          name: "assets/[name].[hash:8].[ext]",
+          name: 'assets/[name].[hash:8].[ext]',
         },
       },
     ],
@@ -51,11 +51,11 @@ const commonConfig = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       minify: false,
-      template: "public/index.html",
+      template: 'public/index.html',
     }),
   ],
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
   },
 };
 
