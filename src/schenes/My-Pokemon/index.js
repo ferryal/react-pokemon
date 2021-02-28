@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState, useEffect } from 'react';
 import localforage from 'localforage';
-import { jsx } from '@emotion/react';
+import { jsx, css } from '@emotion/react';
 import { useHistory } from 'react-router-dom';
 import {
   Card, Navbar, Layout, Button,
@@ -48,26 +48,26 @@ const MyPokemon = () => {
               myPokemon
               rounded="rounded"
               elevated="eleveated"
-              css={{
-                width: '200px',
-                height: '200px',
-                marginTop: '2rem',
-              }}
+              css={css`
+                width: 200px;
+                height: 200px;
+                margin-top: 2rem;
+              `}
             />
           ))}
         </Layout>
       )}
       {(pokemonList.length < 1) && (
         <div
-          css={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginTop: '10rem',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
+          css={css`
+            display: flex;
+            justify-content: center;
+            margin-top: 10rem;
+            flex-direction: column;
+            align-items: center;
+          `}
         >
-          <p css={{ fontWeight: 'bold', fontsize: '30px' }}>Empty list...</p>
+          <p css={css`font-weight: bold; font-size: 30px;`}>Empty list...</p>
           <Button onClick={() => history.push('/')} text="Go to Pokémon List" />
         </div>
       )}

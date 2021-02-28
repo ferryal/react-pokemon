@@ -27,7 +27,7 @@ const bounceAnimation = keyframes`
     100% {
       transform: translate(0);
     }
-`
+`;
 
 const PokemonDetail = () => {
   const [isPokemonCaught, setIsPokemonCaught] = useState(null);
@@ -42,11 +42,7 @@ const PokemonDetail = () => {
 
   const getProbabilityCatch = () => {
     const randomCatch = Math.floor(Math.random() * 100) + 1;
-    console.log(randomCatch);
     setIsPokemonCaught(randomCatch);
-    // if (randomCatch >= 50) {
-    //   setIsPokemonCaught(true);
-    // }
   };
 
   return (
@@ -76,8 +72,7 @@ const PokemonDetail = () => {
                 border-radius: 30px;
                 background: #ffffff;
                 box-shadow: 8px 8px 16px #c4c4c4, -8px -8px 16px #ffffff;
-              `
-              }
+              `}
             >
               <div css={css`font-weight: 600;`}>{ name.toUpperCase() }</div>
               <div css={css`display: flex; flex-flow: wrap;`}>
@@ -133,17 +128,19 @@ const PokemonDetail = () => {
           align-items: center;
           cursor: pointer;
           z-index: 3;
-        `
-        }
+        `}
         >
-          <Button css={css`
+          <Button
+            css={css`
             animation: ${bounceAnimation} 0.3s ease-in infinite both;
             border-radius: 5px;
             background-color: #03ac0d;
             color: #fff;
             border: none;
-          `
-          } onClick={getProbabilityCatch} text="Catch Pokémon" />
+          `}
+            onClick={getProbabilityCatch}
+            text="Catch Pokémon"
+          />
         </div>
       )}
     </>

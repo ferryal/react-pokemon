@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { jsx } from '@emotion/react';
+import { jsx, css } from '@emotion/react';
 import localforage from 'localforage';
 import { GET_LIST_POKEMON } from '../../GraphQL/Queries';
 import {
@@ -53,16 +53,17 @@ const ListPokemon = () => {
               <Card
                 rounded="rounded"
                 elevated="eleveated"
-                css={{
-                  width: '170px',
-                  height: '170px',
-                }}
+                css={css`
+                  width: 170px;
+                  height: 170px;
+                `}
                 key={key}
                 id={key + 1}
                 name={pokemon.name}
                 urlImg={pokemon.image}
                 ownedTotal={ownedTotal}
                 isDetail={false}
+                myPokemon={false}
               />
             ))}
           </Layout>
@@ -75,30 +76,40 @@ const ListPokemon = () => {
     <>
       <Navbar title="React Pokédex" />
       <div css={{ marginTop: '1rem' }}>
-        <div css={{
-          display: 'flex',
-          justifyContent: 'center',
-          flexFlow: 'wrap',
-          marginLeft: '3rem',
-          marginRight: '3rem',
-        }}
+        <div css={css`
+          display: flex;
+          justify-content: center;
+          flex-flow: wrap;
+          margin-left: 3rem;
+          margin-right: 3rem;
+        `}
         />
-        <div css={{
-          display: 'flex',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          width: '100vw',
-          maxWidth: '100vw',
-        }}
+        <div css={css`
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          width: 100vw;
+          max-width: 100vw;
+        `}
         >
           {renderListPokemon()}
         </div>
         {loading && <Loading />}
         {!loading && (
-          <div css={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+          <div css={css`
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+          `}
+          >
             <Button
               onClick={handleNextResult}
-              css={{ borderRadius: '5px' }}
+              css={css`
+              border-radius: 5px;
+              background-color: #03ac0d;
+              color: #fff;
+              border: none;
+              `}
               text="Show more Pokémon"
             />
           </div>
