@@ -29,6 +29,21 @@ const WrapperItem = styled.div`
   margin: 0px 30px;
 `;
 
+const ContainerMobile = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #1f4037;
+  background: -webkit-linear-gradient(to right, #1f4037, #99f2c8);
+  background: linear-gradient(to right, #1f4037, #99f2c8);
+  color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 2;
+`;
+
 const Navbar = (props) => {
   const { title } = props;
   return (
@@ -39,7 +54,7 @@ const Navbar = (props) => {
           fontSize: '2rem',
         }}
         >
-          {props.title}
+          {title}
         </WrapperItem>
         <div css={{ flexGrow: 1 }}>
           <img src={LogoPokemon} alt="Logo" css={{ width: '16vw' }} />
@@ -50,7 +65,7 @@ const Navbar = (props) => {
           },
         }}
         >
-          <Link to="/" css={{ textDecoration: 'none' }}>
+          <Link to="/" css={{ textDecoration: 'none', color: '#fff' }}>
             Pokédex
           </Link>
         </WrapperItem>
@@ -60,11 +75,28 @@ const Navbar = (props) => {
           },
         }}
         >
-          <Link to="/my-pokemon" css={{ textDecoration: 'none' }}>
+          <Link to="/my-pokemon" css={{ textDecoration: 'none', color: '#fff' }}>
             My Pokémon
           </Link>
         </WrapperItem>
       </Container>
+      <ContainerMobile css={{
+        '@media screen and (min-width: 600px)': {
+          display: 'none',
+        },
+      }}
+      >
+        <WrapperItem>
+          <Link to="/" css={{ textDecoration: 'none', color: '#fff' }}>
+            <p>Pokédex</p>
+          </Link>
+        </WrapperItem>
+        <WrapperItem className="navbar-mobile__item">
+          <Link to="/my-pokemon" css={{ textDecoration: 'none', color: '#fff' }}>
+            <p>My Pokémon</p>
+          </Link>
+        </WrapperItem>
+      </ContainerMobile>
     </>
   );
 };
