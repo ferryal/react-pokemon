@@ -12,10 +12,12 @@ import * as serviceWorker from './serviceWorker';
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
-    graphqlErrors.map(({ message, location, path }) => {
+    graphqlErrors.map(({ message }) => {
       alert(`Graphql error ${message}`);
     });
   }
+
+  if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
 const link = from([
