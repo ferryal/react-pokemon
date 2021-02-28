@@ -2,10 +2,31 @@
 import React, { useState, useEffect } from 'react';
 import localforage from 'localforage';
 import { useParams, useHistory } from 'react-router-dom';
-import { jsx } from '@emotion/react';
+import { jsx, css, keyframes } from '@emotion/react';
 import {
   Layout, Navbar, Button, Card, Badge, Loading,
 } from '../../components';
+
+const bounceAnimation = keyframes`
+  0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+`;
 
 const MyPokemonDetail = () => {
   const [detail, setDetail] = useState({ data: [] });
@@ -46,35 +67,35 @@ const MyPokemonDetail = () => {
 
   return (
     <>
-      <Navbar title={`Pokémon Detail - ${name}`} />
+      <Navbar title={`My Pokémon Detail - ${name}`} />
       <Layout>
         {(detail.data.pokemon === undefined) && (
-          <div css={{ marginTop: '1rem' }}>
+          <div css={css`margin-top: 1rem;`}>
             <Loading />
           </div>
         )}
         {!(detail.data.pokemon === undefined) && (
           <>
-            <div css={{ width: '100vw', textAlign: 'center' }}>
-              <img css={{ height: '200px', width: '200px' }} src={detail.data.pokemon.sprites.front_default} alt="pokemon" />
+            <div css={css`width: 100vw; text-align: center;`}>
+              <img css={css`height: 200px; width: 200px;`} src={detail.data.pokemon.sprites.front_default} alt="pokemon" />
             </div>
             <Card
               isDetail
-              css={{
-                width: '60vw',
-                backgroundColor: '#cecece',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: '1rem',
-                borderRadius: '30px',
-                background: '#ffffff',
-                boxShadow: '8px 8px 16px #c4c4c4, -8px -8px 16px #ffffff',
-              }}
+              css={css`
+                width: 60vw;
+                background-color: #cecece;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem;
+                border-radius: 30px;
+                background: #ffffff;
+                box-shadow: 8px 8px 16px #c4c4c4, -8px -8px 16px #ffffff;
+              `}
             >
-              <div css={{ fontWeight: '600' }}>{ name.toUpperCase() }</div>
-              <div css={{ display: 'flex', flexFlow: 'wrap' }}>
+              <div css={css` font-weight: 600;`}>{ name.toUpperCase() }</div>
+              <div css={css`display: flex; flex-flow: wrap;`}>
                 <p>Types</p>
                 {detail.data.pokemon.types
                   ? detail.data.pokemon.types.map((data, index) => (
@@ -86,7 +107,7 @@ const MyPokemonDetail = () => {
                     />
                   )) : ''}
               </div>
-              <div css={{ display: 'flex', flexFlow: 'wrap' }}>
+              <div css={css`display: flex; flex-flow: wrap;`}>
                 <p>Moves</p>
                 {detail.data.pokemon.moves
                   ? detail.data.pokemon.moves.map((data, index) => (
@@ -99,26 +120,30 @@ const MyPokemonDetail = () => {
                   )) : ''}
               </div>
               <div
-                css={{
-                  position: 'fixed',
-                  bottom: '100px',
-                  left: '0',
-                  width: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  flexWrap: 'wrap',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                  zIndex: 3,
-                }}
+                css={css`
+                  position: fixed;
+                  bottom: 100px;
+                  left: 0;
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  align-items: center;
+                  cursor: pointer;
+                  z-index: 3;
+                `}
               >
                 <Button
                   onClick={releasePokemon}
                   text="Release Pokémon"
-                  css={{
-                    borderRadius: '5px', backgroundColor: '#ff0400', color: '#fff', border: 'none',
-                  }}
+                  css={css`
+                    border-radius: 5px;
+                    background-color: #ff0400;
+                    color: #fff;
+                    border: none;
+                    animation: ${bounceAnimation} 0.3s ease-in infinite both;
+                  `}
                 />
               </div>
             </Card>
