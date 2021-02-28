@@ -4,7 +4,7 @@ import { jsx } from '@emotion/react';
 
 const Button = (props) => {
   const {
-    text, style, onClick, ...restProps
+    text, style, onClick, imgUrl, ...restProps
   } = props;
 
   return (
@@ -26,6 +26,7 @@ const Button = (props) => {
       {...restProps}
     >
       {text}
+      {imgUrl !== null && (<img src={imgUrl} alt="" />)}
     </button>
   );
 };
