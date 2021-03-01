@@ -1,7 +1,7 @@
 ## React Pokemon
 
 > Features:
-
+>
 > 1.  List Pokemon Page. (using limit & offset)
 > 2.  Pokemon Detail Page. (Display image, name, moves and types and button catch)
 > 3.  Catch Button. (Show modal result of catch probability)
@@ -18,7 +18,7 @@
 1. IndexedDB (localforage)
 1. NPM
 1. Webpack
-1. Wmotion
+1. Emotion
 1. Eslint
 1. Prettier
 
@@ -35,3 +35,9 @@ npm run serve
 ```
 
 ### Live Demo
+
+[https://react-pokedex-fmfb.netlify.app/](https://react-pokedex-fmfb.netlify.app/)
+
+### Lighthouse Report
+
+[See the report](https://drive.google.com/file/d/1CN_9ZGXJ4CWpo8-YysAkQilAvdyVQ8oA/view?usp=sharing)
