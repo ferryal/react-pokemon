@@ -97,27 +97,30 @@ const MyPokemonDetail = () => {
               <div css={css` font-weight: 600;`}>{ name.toUpperCase() }</div>
               <div css={css`display: flex; flex-flow: wrap;`}>
                 <p>Types</p>
-                {detail.data.pokemon.types
-                  ? detail.data.pokemon.types.map((data, index) => (
+                {detail.data.pokemon.types && (
+                  detail.data.pokemon.types.map((data, index) => (
                     <Badge
                       key={index}
                       text={data.type.name}
                       backgroundColor="#00ffa2"
                       color="#004466"
                     />
-                  )) : ''}
+                  ))
+                )}
               </div>
               <div css={css`display: flex; flex-flow: wrap;`}>
                 <p>Moves</p>
-                {detail.data.pokemon.moves
-                  ? detail.data.pokemon.moves.map((data, index) => (
+                {detail.data.pokemon.moves && (
+
+                  detail.data.pokemon.moves.map((data, index) => (
                     <Badge
                       key={index}
                       text={data.move.name}
                       color="#00ffa2"
                       backgroundColor="#004466"
                     />
-                  )) : ''}
+                  ))
+                )}
               </div>
               <div
                 css={css`
